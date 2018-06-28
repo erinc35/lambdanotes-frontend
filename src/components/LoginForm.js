@@ -17,7 +17,7 @@ class LoginForm extends React.Component {
     }
 
     login = (event) => {
-        axios.post("http://localhost:5000/users/login", this.state)
+        axios.post("https://protected-coast-18613.herokuapp.com/users/login", this.state)
             .then(response => {
                 console.log(response.data)
                 localStorage.setItem('token', response.data.token);

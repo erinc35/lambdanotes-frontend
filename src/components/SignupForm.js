@@ -20,7 +20,7 @@ class SignupForm extends React.Component {
             username: this.state.username,
             password: this.state.password
         };
-        axios.post("http://localhost:5000/users/register", user).then(response => {
+        axios.post("https://protected-coast-18613.herokuapp.com/users/register", user).then(response => {
             localStorage.setItem('token', response.data.token)
             this.props.history.push(`/login`)
             // window.location.href = "/"

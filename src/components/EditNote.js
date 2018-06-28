@@ -21,7 +21,7 @@ class EditNote extends Component {
         Authorization: token
       }
     }
-    axios.get(`http://localhost:5000/notes/${this.props.match.params.id}`, requestOptions)
+    axios.get(`https://protected-coast-18613.herokuapp.com/notes/${this.props.match.params.id}`, requestOptions)
       .then(response => {
         console.log(response)
         this.setState({
@@ -46,7 +46,7 @@ class EditNote extends Component {
         Authorization: token
       }
     }
-    axios.put(`http://localhost:5000/notes/${this.state.id}`, this.state, requestOptions)
+    axios.put(`https://protected-coast-18613.herokuapp.com/${this.state.id}`, this.state, requestOptions)
     .then(() => {
       this.props.history.push(`/notes/${this.state.id}`);
     })
