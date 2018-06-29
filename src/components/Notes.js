@@ -90,7 +90,6 @@ class Notes extends Component {
   };
 
   render() {
-    console.log(this.props.notes )
     if(!localStorage.getItem('token')){
       return <div>Notes are private. You may be able to view it by <a href='/login'>logging in.</a> Don't have an account? <a href='/signup'>Signup here.</a></div>     
     }

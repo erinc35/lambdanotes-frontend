@@ -34,7 +34,7 @@ class Note extends Component {
         }
       }
       // this.props.deleteNote(id, requestOptions);
-      axios.delete(`https://protected-coast-18613.herokuapp.com/notes/${id}`, requestOptions)
+      axios.delete(`http://localhost:5000/notes/${id}`, requestOptions)
         .then(() => {
           this.props.history.push('/')
         })

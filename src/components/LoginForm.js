@@ -17,9 +17,8 @@ class LoginForm extends React.Component {
     }
 
     login = (event) => {
-        axios.post("https://protected-coast-18613.herokuapp.com/users/login", this.state)
+        axios.post("http://localhost:5000/users/login", this.state)
             .then(response => {
-                console.log(response.data)
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem('userId', response.data.userId);                
                 localStorage.setItem('username', this.state.username);
@@ -43,29 +42,31 @@ class LoginForm extends React.Component {
 
     render() {
         return (
-            <div className="App">
-                <h2> Login </h2>
-                <div className={this.state.error ? "error" : "hidden"}>
-                    {this.state.errorMessage}
-                </div>
-                <div className='signup-form'>
-                    <div className="form-group">
-                        <input className="form-control" placeholder="Username" name='username' type="text" value={this.state.username} onChange={this.handleInputChange} />
+            <div className="col-sm-9">
+                <div className='signup-form-div'>
+                    <h2> Login </h2>
+                    <div className={this.state.error ? "error" : "hidden"}>
+                        {this.state.errorMessage}
                     </div>
-                    <div className="form-group">
-                        <input className="form-control" placeholder="Password" name='password' type="password" value={this.state.password} onChange={this.handleInputChange} />
-                    </div>
-                    <div className='signup-buts'>
-                        <button type="submit" className="signup-button" onClick={this.login}>
-                            Login
-                        </button>
-                        <Link to="/">
-                            <button className="home-button">
-                                Home
+                    <div className='signup-form'>
+                        <div className="form-group">
+                            <input className="form-control" placeholder="Username" name='username' type="text" value={this.state.username} onChange={this.handleInputChange} />
+                        </div>
+                        <div className="form-group">
+                            <input className="form-control" placeholder="Password" name='password' type="password" value={this.state.password} onChange={this.handleInputChange} />
+                        </div>
+                        <div className='signup-buts'>
+                            <button type="submit" className="signup-button" onClick={this.login}>
+                                Login
                             </button>
-                        </Link>
+                            <Link to="/">
+                                <button className="home-button">
+                                    Home
+                                </button>
+                            </Link>
+                        </div>
                     </div>
-                </div>
+                </div>                
             </div>
         )
     }

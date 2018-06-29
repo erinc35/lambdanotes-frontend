@@ -12,7 +12,7 @@ export const ERROR_DELETING_NOTES = "ERROR_DELETING_NOTES";
 export const ORDER_NOTE = "ORDER_NOTE";
 
 export const fetchNotes = (userId) => {
-  const user = axios.get(`https://protected-coast-18613.herokuapp.com/users/${userId}`);
+  const user = axios.get(`http://localhost:5000/users/${userId}`);
   return dispatch => {
     dispatch({ type: FETCHING_NOTES });
     user.then(response => {

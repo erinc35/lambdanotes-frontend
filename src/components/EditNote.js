@@ -46,7 +46,7 @@ class EditNote extends Component {
         Authorization: token
       }
     }
-    axios.put(`https://protected-coast-18613.herokuapp.com/${this.state.id}`, this.state, requestOptions)
+    axios.put(`http://localhost:5000/notes/${this.state.id}`, this.state, requestOptions)
     .then(() => {
       this.props.history.push(`/notes/${this.state.id}`);
     })
