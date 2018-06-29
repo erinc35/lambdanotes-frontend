@@ -22,16 +22,20 @@ class Sidebar extends Component {
               {" "}
               Lambda<br />Notes
             </h2>
-            {  ( 
-            <button onClick={homeLink} className="mr-sm-2 ml-sm-3 mb-sm-3 sidebar-item pt-sm-1">
-              View Your Notes
-            </button>
+            {this.state.isLoggedIn !== null ? ( 
+              <div>
+                <button onClick={homeLink} className="mr-sm-2 ml-sm-3 mb-sm-3 sidebar-item pt-sm-1">
+                  View Your Notes
+                </button>
+                <Link to="/create">
+                  <button className="mr-sm-2 ml-sm-3 mb-sm-3 sidebar-item pt-sm-1">
+                    + Create New Note
+                  </button>
+                </Link>
+              </div>
+            ) : (
+              <div></div>
             )}
-            <Link to="/create">
-              <button className="mr-sm-2 ml-sm-3 mb-sm-3 sidebar-item pt-sm-1">
-                + Create New Note
-              </button>
-            </Link>
             <CSVLink data={this.props.notes}>
               <button className="mr-sm-2 ml-sm-3 mb-sm-3 sidebar-item pt-sm-1">
                 Export All Notes

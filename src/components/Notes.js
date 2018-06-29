@@ -25,7 +25,8 @@ class Notes extends Component {
     if (localStorage.getItem('token')) {
       localStorage.removeItem('token');
       localStorage.removeItem('userId');      
-      this.props.history.push('/login');
+      // this.props.history.push('/login');
+      window.location.href = "/"
     }
   };
 
