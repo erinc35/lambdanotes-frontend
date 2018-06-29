@@ -261,3 +261,7 @@ body, html {
   background: white;
   color: red;
 }
+
+.notes-private {
+  margin: 2%;
+}

@@ -12,17 +12,21 @@ function homeLink() {
 }
 
 class Sidebar extends Component {
+    state = {
+      isLoggedIn: localStorage.getItem('token')
+    }
+
     render() {
         return <div className="sidebar col-sm-3">
             <h2 className="sidebar-header">
               {" "}
               Lambda<br />Notes
             </h2>
-
-              <button onClick={homeLink} className="mr-sm-2 ml-sm-3 mb-sm-3 sidebar-item pt-sm-1">
-                View Your Notes
-              </button>
-
+            {(this.state.isLoggedIn) ? ( 
+            <button onClick={homeLink} className="mr-sm-2 ml-sm-3 mb-sm-3 sidebar-item pt-sm-1">
+              View Your Notes
+            </button>
+            ) : (<div></div>)}
             <Link to="/create">
               <button className="mr-sm-2 ml-sm-3 mb-sm-3 sidebar-item pt-sm-1">
                 + Create New Note
@@ -34,7 +38,7 @@ class Sidebar extends Component {
               </button>
             </CSVLink>
           </div>;
-        }
+        }     
 }
 
 const mapStateToProps = state => {
