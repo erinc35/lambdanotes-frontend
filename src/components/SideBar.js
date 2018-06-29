@@ -22,11 +22,11 @@ class Sidebar extends Component {
               {" "}
               Lambda<br />Notes
             </h2>
-            {(this.state.isLoggedIn) ? ( 
+            {  ( 
             <button onClick={homeLink} className="mr-sm-2 ml-sm-3 mb-sm-3 sidebar-item pt-sm-1">
               View Your Notes
             </button>
-            ) : (<div></div>)}
+            )}
             <Link to="/create">
               <button className="mr-sm-2 ml-sm-3 mb-sm-3 sidebar-item pt-sm-1">
                 + Create New Note
