@@ -50,7 +50,6 @@ class Note extends Component {
     }
 
     render() {
-      console.log(localStorage.getItem('token'))
       let found = {
         title: 'fetching title...',
         content: 'fetching content...'

@@ -7,18 +7,22 @@ import { fetchNotes } from "../actions";
 
 
 class Notes extends Component {
+  
   state = {
     search: "",
     titleCheck: true,
     contentCheck: false,
     order: {},
     authorized: false,
-    token: ''
+    token: '',
+    abs: ''
   };
   
   componentDidMount() {
+    console.log('cdm')
     let userId = localStorage.getItem('userId')
-    if(userId) this.props.fetchNotes(userId)
+    if(userId) this.props.fetchNotes(userId);
+    // localStorage.setItem('array', Array.from(this.props.notes))
   }
 
   logout = () => {
@@ -63,8 +67,18 @@ class Notes extends Component {
     for (let i = 0; i < noteTitles.length; i++) {
       this.props.notes[i] = noteOrder[noteTitles[i]];
     }
-    localStorage.setItem("array", JSON.stringify(this.props.notes));
-    this.setState(this.state);
+    console.log(this.props.notes)
+    
+    // localStorage.setItem("array", JSON.stringify(this.props.notes));
+    localStorage.setItem('currentOrder', JSON.stringify(this.props.notes).split(',') || [])
+    // localStorage.setItem('currentOrder', localStorage.getItem('currentOrder') || [])
+    // this.props.notes = localStorage.getItem('currentOrder')
+    console.log(localStorage.getItem('currentOrder'))  
+    console.log(this.props.notes)
+    this.setState({ abs: this.props.staten })
+    this.setState(this.state)
+    console.log(this.state)
+    // this.savedPosition()
   };
 
   savedPosition = () => {
@@ -75,6 +89,7 @@ class Notes extends Component {
       source.forEach((item, index) => {
         currentOrder.push(item.id);
       });
+      console.log(currentOrder)
       this.setState({ order: currentOrder });
       // console.log(typeof this.state.order);
 
@@ -88,12 +103,22 @@ class Notes extends Component {
       }
       localStorage.setItem("array", JSON.stringify(this.props.notes));
     }, 300);
+    this.setState({ abs: 'abs'})
+    console.log(localStorage.getItem('array').forEach(not => {
+      console.log(not)
+    }))
+    
   };
 
   render() {
+    // console.log(localStorage.getItem('currentOrder'))
+    console.log('this.props.notes', this.props.notes)
+    console.log(this.state)
     if(!localStorage.getItem('token')){
       return <div className='notes-private'>Notes are private. You may be able to view it by <a href='/login'>logging in.</a> Don't have an account? <a href='/signup'>Signup here.</a></div>     
     }
+    console.log('this.props.notes', this.props.notes)
+    
     let filteredNotes = this.props.notes.filter(note => {
       if (this.state.search === "") {
         return this.props.notes;
@@ -183,6 +208,8 @@ class Notes extends Component {
 };
 
 const mapStateToProps = state => {
+  // console.log('mapstate')
+  // console.log('state', state)
   return {
     notes: state[0].requestedUser.notes
   };

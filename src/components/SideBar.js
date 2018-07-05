@@ -32,15 +32,15 @@ class Sidebar extends Component {
                     + Create New Note
                   </button>
                 </Link>
+                <CSVLink data={this.props.notes}>
+                  <button className="mr-sm-2 ml-sm-3 mb-sm-3 sidebar-item pt-sm-1">
+                    Export All Notes
+                  </button>
+                </CSVLink>
               </div>
             ) : (
               <div></div>
             )}
-            <CSVLink data={this.props.notes}>
-              <button className="mr-sm-2 ml-sm-3 mb-sm-3 sidebar-item pt-sm-1">
-                Export All Notes
-              </button>
-            </CSVLink>
           </div>;
         }     
 }
