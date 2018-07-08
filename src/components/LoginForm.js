@@ -43,7 +43,7 @@ class LoginForm extends React.Component {
 
     render() {
         return (
-            <div className="col-sm-9">
+            <div className="">
                 <div className='signup-form-div'>
                     <h2> Login </h2>
                     <div className={this.state.error ? "error" : "hidden"}>
